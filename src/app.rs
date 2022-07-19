@@ -3,7 +3,7 @@ use yew::prelude::*;
 #[function_component(App)]
 pub fn app() -> Html {
     html! {
-    <div class="relative bg-red-900 overflow-hidden">
+    <div class="relative bg-white overflow-hidden">
       <div class="hidden sm:block sm:absolute sm:inset-y-0 sm:h-full sm:w-full" aria-hidden="true">
         <div class="relative h-full max-w-7xl mx-auto">
           <svg class="absolute right-full transform translate-y-1/4 translate-x-1/4 lg:translate-x-1/2" width="404" height="784" fill="none" viewBox="0 0 404 784">
