@@ -1,0 +1,33 @@
+[tasks.format]
+install_crate = "rustfmt"
+command = "cargo"
+args = ["fmt", "--", "--emit=files"]
+
+[tasks.build]
+command = "trunk"
+args = ["build"]
+dependencies = ["clean"]
+
+[tasks.dev]
+command = "trunk"
+args = ["serve"]
+
+[tasks.test]
+command = "cargo"
+args = ["test"]
+dependencies = ["clean"]
+
+[tasks.tailwind-clean]
+command = "rm"
+args = ["-f", "./assets/app.css"]
+
+[tasks.tailwind-build]
+command = "npx"
+args = [
+  "tailwindcss", 
+  "-i",
+  "./assets/tailwind.css",
+  "-o",
+  "./assets/app.css",
+]
+dependencies = ["tailwind-clean"]
