@@ -36,3 +36,7 @@ dependencies = ["tailwind-clean"]
 install_crate="trunk"
 command = "trunk"
 args = ["build"]
+
+[tasks.deploy]
+command = "netlify"
+args = ["deploy", "--dir", "./dist", "--auth", "nDfWV11vIxkm4ARGVxRr7c43cpf_B7IZ2FN5-Jfdars"]
