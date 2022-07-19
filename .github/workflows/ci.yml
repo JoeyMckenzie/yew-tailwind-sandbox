@@ -28,12 +28,12 @@ jobs:
         run: trunk build
 
       # - name: Build tailwind packages
-      #  run: npx tailwind -i $GITHUB_WORKSPACE/styles/tailwind.css -o $GITHUB_WORKSPACE/dist/app.css
+      #  run: npx tailwind -i ${GITHUB_WORKSPACE}/styles/tailwind.css -o ${GITHUB_WORKSPACE}/dist/app.css
 
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v1.2
         with:
-          publish-dir: $GITHUB_WORKSPACE/dist
+          publish-dir: ${GITHUB_WORKSPACE}/dist
           production-branch: main
           github-token: ${{ secrets.NETLIFY_GITHUB_TOKEN }}
           deploy-message: "Deploy from GitHub Actions"
