@@ -16,7 +16,7 @@ jobs:
       - uses: dtolnay/rust-toolchain@stable
 
       - name: Install trunk
-        run: cargo install trunk
+        run: cargo install --locked trunk
 
       - name: Build yew files
         run: trunk build
