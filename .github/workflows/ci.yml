@@ -14,7 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: dtolnay/rust-toolchain@stable
-  
+
       - name: Install node packages
         run: npm install --save-dev
 
@@ -25,19 +25,19 @@ jobs:
         run: cargo install --locked trunk
 
       - name: Build yew files
-        run: trunk build
-
-      # - name: Build tailwind packages
-      #  run: npx tailwind -i ${GITHUB_WORKSPACE}/styles/tailwind.css -o ${GITHUB_WORKSPACE}/dist/app.css
+        run: trunk build --release
 
       - name: Deploy to Netlify
-        uses: nwtgck/actions-netlify@v1.2
-        with:
-          publish-dir: "./dist"
-          production-branch: main
-          github-token: ${{ secrets.NETLIFY_GITHUB_TOKEN }}
-          deploy-message: "Deploy from GitHub Actions"
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_DEPLOYMENT_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-        timeout-minutes: 1
+        run: npm install netlify-cli && netlify deploy --prod --dir ${GITHUB_WORKSPACE}/dist --auth ${{ secrets.NETLIFY_DEPLOYMENT_TOKEN }} --site ${{ secrets.NETLIFY_AUTH_TOKEN }}
+
+      # - name: Deploy to Netlify
+      #   uses: nwtgck/actions-netlify@v1.2
+      #   with:
+      #     publish-dir: "./dist"
+      #     production-branch: main
+      #     github-token: ${{ secrets.NETLIFY_GITHUB_TOKEN }}
+      #     deploy-message: "Deploy from GitHub Actions"
+      #   env:
+      #     NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_DEPLOYMENT_TOKEN }}
+      #     NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+      #   timeout-minutes: 1
