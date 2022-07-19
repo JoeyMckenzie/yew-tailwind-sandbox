@@ -1,0 +1,22 @@
+name: Build and deploy
+
+on:
+  push:
+    branches: ["main"]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: dtolnay/rust-toolchain@stable
+
+      - name: Install cargo-make
+        run: cargo install --debug cargo-make
+
+      - name: Run CI
+        run: cargo make ci

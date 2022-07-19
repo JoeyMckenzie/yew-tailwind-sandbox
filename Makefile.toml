@@ -31,3 +31,8 @@ args = [
   "./assets/app.css",
 ]
 dependencies = ["tailwind-clean"]
+
+[tasks.ci]
+install_crate="trunk"
+command = "trunk"
+args = ["build"]
